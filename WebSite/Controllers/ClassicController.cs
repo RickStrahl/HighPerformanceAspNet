@@ -16,7 +16,9 @@ namespace HighPerformanceAspNet.Controllers
         [HttpPost("hello")]
         public object Hello(RequestMessage model)
         {
-            return new { name = "Rick", message = "Hello World" };
+            return new { name = model.Name, message = model.Message };
         }
+
+
     }
 }
