@@ -32,7 +32,7 @@ app.MapControllers();
 
 Console.ForegroundColor = ConsoleColor.DarkYellow;
 Console.WriteLine($@"---------------------------------
-West Wind Web Store
+High Performance ASP.NET
 ---------------------------------");
 Console.ResetColor();
 
