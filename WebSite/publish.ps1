@@ -1,0 +1,1 @@
+dotnet publish HighPerformanceAspNet.csproj -o ../Publish -c Release
