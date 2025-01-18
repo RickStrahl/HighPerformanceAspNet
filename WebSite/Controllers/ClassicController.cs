@@ -19,6 +19,5 @@ namespace HighPerformanceAspNet.Controllers
             return new { name = model.Name, message = model.Message };
         }
 
-
     }
 }

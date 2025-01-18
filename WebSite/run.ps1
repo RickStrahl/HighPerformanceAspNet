@@ -1,1 +1,1 @@
-../publish/HighPerformanceAspNet --urls https://localhost:5200
+../publish/HighPerformanceAspNet --urls http://localhost:5200

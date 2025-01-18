@@ -25,10 +25,9 @@ app.MapPost("/hello", (RequestMessage model) =>
 
 
 app.UseStaticFiles();
-
-
 app.MapControllers();
 
+app.Start();
 
 Console.ForegroundColor = ConsoleColor.DarkYellow;
 Console.WriteLine($@"---------------------------------
@@ -36,19 +35,20 @@ High Performance ASP.NET
 ---------------------------------");
 Console.ResetColor();
 
+var urlList = app.Urls;
+string urls = string.Join(" ", urlList);
 
-var urls = builder.WebHost.GetSetting(WebHostDefaults.ServerUrlsKey)?.Replace(";", " ");
-Console.Write($"    Urls: ");
+Console.Write("    Urls: ");
 Console.ForegroundColor = ConsoleColor.DarkCyan;
-Console.WriteLine($"{urls}", ConsoleColor.DarkCyan);
+Console.WriteLine(urls, ConsoleColor.DarkCyan);
 Console.ResetColor();
 
 Console.WriteLine($" Runtime: {RuntimeInformation.FrameworkDescription} - {builder.Environment.EnvironmentName}");
-Console.WriteLine($"Platform: {RuntimeInformation.OSDescription}");
+Console.WriteLine($"Platform: {RuntimeInformation.OSDescription} ({RuntimeInformation.OSArchitecture})");
+Console.WriteLine($"Process Id: " + System.Diagnostics.Process.GetCurrentProcess().Id);
 Console.WriteLine();
 
-
-app.Run();
+app.WaitForShutdown();
 
 public class RequestMessage
 {

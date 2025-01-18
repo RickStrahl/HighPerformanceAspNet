@@ -1,6 +1,5 @@
-GET /hello HTTP/2.0
+GET hello HTTP/2.0
 Accept-Encoding: gzip,deflate
-Websurge-Request-Inactive: 1
 Websurge-Request-Name: Hello Json (GET)
 WebSurge-Request-Group: Minimal Json
 
@@ -8,6 +7,7 @@ WebSurge-Request-Group: Minimal Json
 
 GET classic/hello HTTP/2.0
 Accept-Encoding: gzip,deflate
+Websurge-Request-Inactive: 1
 Websurge-Request-Name: Hello Json Classic (GET)
 WebSurge-Request-Group: Controller Json
 
@@ -16,7 +16,6 @@ WebSurge-Request-Group: Controller Json
 POST /hello HTTP/2.0
 Accept-Encoding: gzip,deflate
 Content-Type: application/json
-Websurge-Request-Inactive: 1
 Websurge-Request-Name: Hello Json Echo (POST)
 WebSurge-Request-Group: Minimal Json
 
@@ -30,6 +29,7 @@ WebSurge-Request-Group: Minimal Json
 POST classic/hello HTTP/2.0
 Accept-Encoding: gzip,deflate
 Content-Type: application/json
+Websurge-Request-Inactive: 1
 Websurge-Request-Name: Hello Json Echo Classic (POST)
 WebSurge-Request-Group: Controller Json
 
@@ -48,25 +48,36 @@ WebSurge-Request-Group: Static
 
 ------------------------------------------------------------------
 
+GET /websurge-allow.txt HTTP/2.0
+Accept-Encoding: gzip,deflate
+Websurge-Request-Inactive: 1
+Websurge-Request-Name: websurge allow
+WebSurge-Request-Group: Static
+
+------------------------------------------------------------------
+
 
 ----- Start WebSurge Options -----
 
 {
-  "SiteBaseUrl": "https://localhost:5200/",
+  "SiteBaseUrl": "http://dev.west-wind.com:5200/",
   "RecentSiteBaseUrlList": [
+    "http://dev.west-wind.com:5200/",
+    "https://dev.west-wind.com:5200/",
+    "https://192.168.0.223:5200/",
     "https://localhost:5200/",
     "http://localhost/",
     "http://localhost/HighPerformance/"
   ],
-  "OnlineSessionId": null,
+  "OnlineSessionId": "nguikfwir1",
   "SessionVariables": {},
-  "UseCustomUsers": false,
-  "HttpProtocolVersion": "2.0",
+  "UseCustomUsers": true,
+  "HttpProtocolVersion": "1.1",
   "IgnoreCertificateErrors": false,
   "NoContentDecompression": false,
   "UpdateHeadersFromRequest": false,
   "SecondsToRun": 60,
-  "ThreadCount": 24,
+  "ThreadCount": 64,
   "DelayTimeMs": -1,
   "WarmupSeconds": 2,
   "RequestTimeoutMs": 5000,
@@ -83,11 +94,28 @@ WebSurge-Request-Group: Static
   "UsernamePasswordType": "",
   "Users": [
     {
-      "Id": "user-2253c3d3",
+      "Id": "user1",
       "IsActive": true,
       "HttpForms": [],
       "AuthCookie": null,
-      "Authorization": null
+      "Authorization": null,
+      "AdditionalHeaders": "x-custom-header: user1"
+    },
+    {
+      "Id": "user2",
+      "IsActive": true,
+      "HttpForms": [],
+      "AuthCookie": null,
+      "Authorization": null,
+      "AdditionalHeaders": "x-custom-header: user2"
+    },
+    {
+      "Id": "user3",
+      "IsActive": true,
+      "HttpForms": [],
+      "AuthCookie": null,
+      "Authorization": "",
+      "AdditionalHeaders": "x-custom-header: user3"
     }
   ],
   "UserAgent": null,
